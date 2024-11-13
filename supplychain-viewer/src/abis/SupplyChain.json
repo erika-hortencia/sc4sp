@@ -1,0 +1,501 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "localizacao",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tempoEstimadoEntrega",
+        "type": "uint256"
+      }
+    ],
+    "name": "AtualizacaoTransporte",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "int256",
+        "name": "temperatura",
+        "type": "int256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "umidade",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "CondicaoAtualizada",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "nome",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "origem",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "destino",
+        "type": "address"
+      }
+    ],
+    "name": "ProdutoCriado",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "de",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "para",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "TransferenciaPosse",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "int256",
+        "name": "temperatura",
+        "type": "int256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "umidade",
+        "type": "uint256"
+      }
+    ],
+    "name": "atualizarCondicao",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "localizacaoAtual",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "statusTransporte",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tempoEstimadoEntrega",
+        "type": "uint256"
+      }
+    ],
+    "name": "atualizarTransporte",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "autorizados",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "participante",
+        "type": "address"
+      }
+    ],
+    "name": "autorizarParticipante",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "contadorProdutos",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "nome",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "destino",
+        "type": "address"
+      }
+    ],
+    "name": "criarProduto",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "historicoCondicoes",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "int256",
+        "name": "temperatura",
+        "type": "int256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "umidade",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "historicoMovimentacoes",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "de",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "para",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "produtos",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "nome",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "origem",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "destino",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "proprietarioAtual",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "status",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "novoProprietario",
+        "type": "address"
+      }
+    ],
+    "name": "transferirPosse",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "transportes",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "localizacaoAtual",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "statusTransporte",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tempoEstimadoEntrega",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      }
+    ],
+    "name": "verHistoricoCondicoes",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "produtoId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "int256",
+            "name": "temperatura",
+            "type": "int256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "umidade",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct SupplyChain.Condicao[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "produtoId",
+        "type": "uint256"
+      }
+    ],
+    "name": "verHistoricoMovimentacao",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "produtoId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "de",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "para",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct SupplyChain.Movimentacao[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
